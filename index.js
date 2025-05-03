@@ -2,11 +2,19 @@ console.log("Hello World");
 
 const contentArea = document.getElementById("result");
 
-async function main() {
+const CheckBtn = document.getElementById('CheckBtn');
+CheckBtn.addEventListener('change', function () {
+  main(CheckBtn.category.value);
+});
+
+async function main(category) {
   
   try {
-    const charaInfo = await fetchCharaInfo();
+    charaInfo = await fetchCharaInfo(category);
     console.log(charaInfo);
+    while(contentArea.firstChild){
+      contentArea.removeChild(contentArea.firstChild);
+    }
 
     for (const index in charaInfo) {
       console.log(charaInfo[index].category);
@@ -47,8 +55,8 @@ async function main() {
   // content_area.appendChild(img_element2);
 }
 
-function fetchCharaInfo (){
-  return fetch(`https://ihatov08.github.io/kimetsu_api/api/all.json`)
+function fetchCharaInfo (category){
+  return fetch(`https://ihatov08.github.io/kimetsu_api/api/${category}.json`)
   .then(response => {
     if (!response.ok) {
       return Promise.reject(new Error(`${response.status}: ${response.statusText}`));

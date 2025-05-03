@@ -8,33 +8,35 @@
   <title>鬼滅の刃API</title>
 </head>
 <body>
-  <h1 class="m-5 display-2 text-center">鬼滅の刃 API</h1>
+  <h1 class="m-2 display-2 text-center">鬼滅の刃 API</h1>
   <h3 class="m-3 text-center">カテゴリー</h3>
-  <div class="m-4 d-flex justify-content-center gap-4 fs-4">
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="allCharactor" checked>
-      <label class="form-check-label" for="flexRadioDefault1">
-        全キャラクター
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="kisatsutai">
-      <label class="form-check-label" for="flexRadioDefault1">
-        鬼殺隊
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="hashira">
-      <label class="form-check-label" for="flexRadioDefault1">
-        柱
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="oni">
-      <label class="form-check-label" for="flexRadioDefault1">
-        鬼
-      </label>
-    </div>
+  <div class="m-4 d-flex justify-content-center fs-4">
+    <form id="CheckBtn">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="category" value="all" checked>
+        <label class="form-check-label" for="flexRadioDefault1">
+          全キャラクター
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="category" value="kisatsutai">
+        <label class="form-check-label" for="flexRadioDefault1">
+          鬼殺隊
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="category" value="hashira">
+        <label class="form-check-label" for="flexRadioDefault1">
+          柱
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="category" value="oni">
+        <label class="form-check-label" for="flexRadioDefault1">
+          鬼
+        </label>
+      </div>
+    </form>
   </div>
 
   <div class="container text-center fs-3" >
