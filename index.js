@@ -1,4 +1,3 @@
-console.log("Hello World");
 
 const contentArea = document.getElementById("result");
 
@@ -18,8 +17,7 @@ async function main(category = 'all') {
     loadElement.classList.add('spinner-border');
     contentArea.appendChild(loadElement);
 
-    charaInfo = await fetchCharaInfo(category);
-    console.log(charaInfo);
+    const charaInfo = await fetchCharaInfo(category);
     contentArea.removeChild(loadElement);
     contentArea.parentNode.classList.remove('d-flex','justify-content-center');
 
@@ -50,16 +48,6 @@ async function main(category = 'all') {
   } catch (error) {
     console.error(`エラーが発生しました (${error})`);
   }
-
-  
-  // let img_element2 = document.createElement('img');
-  // img_element2.src = 'Hakubisin.jpeg'; // 画像パス
-  // img_element2.alt = 'ハクビシン'; // 代替テキスト
-  // img_element2.width = 200; // 横サイズ（px）
-  // img_element2.height = 200; // 縦サイズ（px）
-  // // 指定した要素にimg要素を挿入
-
-  // content_area.appendChild(img_element2);
 }
 
 function fetchCharaInfo (category){
