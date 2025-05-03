@@ -50,15 +50,12 @@ async function main(category = 'all') {
   }
 }
 
-function fetchCharaInfo (category){
-  return fetch(`https://ihatov08.github.io/kimetsu_api/api/${category}.json`)
-  .then(response => {
-    if (!response.ok) {
-      return Promise.reject(new Error(`${response.status}: ${response.statusText}`));
-    } else {
-      return response.json();
-    }
-  });
+async function fetchCharaInfo(category) {
+  const response = await fetch(`https://ihatov08.github.io/kimetsu_api/api/${category}.json`);
+  if (!response.ok) {
+    throw new Error(`${response.status}: ${response.statusText}`);
+  }
+  return await response.json();
 }
 
 main();
