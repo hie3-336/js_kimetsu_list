@@ -10,11 +10,18 @@ CheckBtn.addEventListener('change', function () {
 async function main(category = 'all') {
   
   try {
-    charaInfo = await fetchCharaInfo(category);
-    console.log(charaInfo);
     while(contentArea.firstChild){
       contentArea.removeChild(contentArea.firstChild);
     }
+    const loadElement = document.createElement('div');
+    contentArea.parentNode.classList.add('d-flex','justify-content-center');
+    loadElement.classList.add('spinner-border');
+    contentArea.appendChild(loadElement);
+
+    charaInfo = await fetchCharaInfo(category);
+    console.log(charaInfo);
+    contentArea.removeChild(loadElement);
+    contentArea.parentNode.classList.remove('d-flex','justify-content-center');
 
     for (const index in charaInfo) {
       console.log(charaInfo[index].category);
