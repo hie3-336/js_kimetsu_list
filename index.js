@@ -7,7 +7,7 @@ CheckBtn.addEventListener('change', function () {
   main(CheckBtn.category.value);
 });
 
-async function main(category) {
+async function main(category = 'all') {
   
   try {
     charaInfo = await fetchCharaInfo(category);
