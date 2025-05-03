@@ -1,26 +1,35 @@
-
+// コンテンツメイン部分
 const contentArea = document.getElementById("result");
 
+// カテゴリー選択部分
 const CheckBtn = document.getElementById('CheckBtn');
 CheckBtn.addEventListener('change', function () {
   main(CheckBtn.category.value);
 });
 
+// APIを叩きコンテンツを表示するメイン関数 (初回表示はカテゴリーをallに設定)
 async function main(category = 'all') {
   
   try {
+    // 前回表示したコンテンツをリセット
     while(contentArea.firstChild){
       contentArea.removeChild(contentArea.firstChild);
     }
+
+    // ロード画面表示処理
     const loadElement = document.createElement('div');
     contentArea.parentNode.classList.add('d-flex','justify-content-center');
     loadElement.classList.add('spinner-border');
     contentArea.appendChild(loadElement);
 
+    // APIを叩く部分
     const charaInfo = await fetchCharaInfo(category);
+
+    // ロード画面を消す
     contentArea.removeChild(loadElement);
     contentArea.parentNode.classList.remove('d-flex','justify-content-center');
 
+    // 取得したオブジェクトをもとにキャラ一覧を描画
     for (const index in charaInfo) {
       console.log(charaInfo[index].category);
       console.log(charaInfo[index].image);
@@ -50,6 +59,7 @@ async function main(category = 'all') {
   }
 }
 
+// APIを叩く処理
 async function fetchCharaInfo(category) {
   const response = await fetch(`https://ihatov08.github.io/kimetsu_api/api/${category}.json`);
   if (!response.ok) {
@@ -58,4 +68,5 @@ async function fetchCharaInfo(category) {
   return await response.json();
 }
 
+// 初回ロード時にメイン関数実行
 main();
