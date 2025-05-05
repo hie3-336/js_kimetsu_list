@@ -1,10 +1,12 @@
+const apiUrl = 'https://ihatov08.github.io';
+
 // コンテンツメイン部分
 const contentArea = document.getElementById("result");
 
 // カテゴリー選択部分
-const CheckBtn = document.getElementById('CheckBtn');
-CheckBtn.addEventListener('change', function () {
-  main(CheckBtn.category.value);
+const checkBtn = document.getElementById('checkBtn');
+checkBtn.addEventListener('change', function () {
+  main(checkBtn.category.value);
 });
 
 // APIを叩きコンテンツを表示するメイン関数 (初回表示はカテゴリーをallに設定)
@@ -40,7 +42,7 @@ async function main(category = 'all') {
       const categoryElement = document.createElement('div');
       const nameElement = document.createElement('div');
 
-      imgElement.src = "https://ihatov08.github.io"+ charaInfo[index].image; // 画像パス
+      imgElement.src = apiUrl + charaInfo[index].image; // 画像パス
       imgElement.alt = charaInfo[index].name;
       imgElement.width = 200;
       imgElement.height = 200;
@@ -61,7 +63,7 @@ async function main(category = 'all') {
 
 // APIを叩く処理
 async function fetchCharaInfo(category) {
-  const response = await fetch(`https://ihatov08.github.io/kimetsu_api/api/${category}.json`);
+  const response = await fetch(apiUrl + `/kimetsu_api/api/${category}.json`);
   if (!response.ok) {
     throw new Error(`${response.status}: ${response.statusText}`);
   }
